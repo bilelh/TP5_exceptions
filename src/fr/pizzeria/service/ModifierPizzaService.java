@@ -14,19 +14,17 @@ public class ModifierPizzaService extends MenuService {
 		
 		System.out.println("Mise à jour d'une pizza  ");
 		
+			// CHOIX DU CODE PIZZA PAR L'UTILISATEUR
 		System.out.println("Veuillez choisir le code de la pizza à modifier:  ");
-		//questionUser.nextLine();
+		
 		String modif_code = questionUser.nextLine();
 		
-		//boolean exist = pizzaDao.pizzaExists(modif_code) ;
 		
+			// EXCEPTION
 		if(!pizzaDao.pizzaExists(modif_code)) {
-			throw new UpdatePizzaException("/!\\ La pizza à modifier est introuvable.");
+			throw new UpdatePizzaException(" La pizza à modifier n'existe pas");
 		}
-			
-		//if (exist == false) {
-				
-			
+
 				
 			System.out.println("la pizza existe  ");
 		
