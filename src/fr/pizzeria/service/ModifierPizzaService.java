@@ -17,13 +17,16 @@ public class ModifierPizzaService extends MenuService {
 		//questionUser.nextLine();
 		String modif_code = questionUser.nextLine();
 		
-		
 		boolean exist = pizzaDao.pizzaExists(modif_code) ;
 		
-		if (exist == true) {
+			
+		if (exist == false) {
+				
+			
+				
 			System.out.println("la pizza existe  ");
-			
-			
+		
+		
 			System.out.println("Veuillez saisir le nouveau code:  ");
 			String newCode = questionUser.nextLine();
 			
@@ -38,12 +41,14 @@ public class ModifierPizzaService extends MenuService {
 			Pizza newPizza = new Pizza (newCode , newLibelle , newPrix) ;
 			pizzaDao.updatePizza(modif_code, newPizza);
 			
+		
 		} else {
 			System.out.println("la pizza n'existe pas  ");
 		}
 		
 		
 		
-	}
+	
 
+}
 }
