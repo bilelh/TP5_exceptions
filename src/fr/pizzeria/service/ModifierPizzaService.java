@@ -1,6 +1,7 @@
 package fr.pizzeria.service;
 import java.util.Scanner;
 
+import fr.pizzeria.exception.UpdatePizzaException;
 import fr.pizzeria.model.Pizza;
 
 public class ModifierPizzaService extends MenuService {
@@ -8,7 +9,7 @@ public class ModifierPizzaService extends MenuService {
 	Scanner questionUser = new Scanner(System.in);
 
 	@Override
-	public void executeUC(PizzaMemoDao pizzaDao) {
+	public void executeUC(PizzaMemoDao pizzaDao) throws UpdatePizzaException {
 		// TODO Auto-generated method stub
 		
 		System.out.println("Mise à jour d'une pizza  ");
@@ -17,10 +18,13 @@ public class ModifierPizzaService extends MenuService {
 		//questionUser.nextLine();
 		String modif_code = questionUser.nextLine();
 		
-		boolean exist = pizzaDao.pizzaExists(modif_code) ;
+		//boolean exist = pizzaDao.pizzaExists(modif_code) ;
 		
+		if(!pizzaDao.pizzaExists(modif_code)) {
+			throw new UpdatePizzaException("/!\\ La pizza à modifier est introuvable.");
+		}
 			
-		if (exist == false) {
+		//if (exist == false) {
 				
 			
 				
@@ -42,13 +46,9 @@ public class ModifierPizzaService extends MenuService {
 			pizzaDao.updatePizza(modif_code, newPizza);
 			
 		
-		} else {
-			System.out.println("la pizza n'existe pas  ");
+		//} else {
+		//	System.out.println("la pizza n'existe pas  ");
 		}
-		
-		
-		
-	
 
 }
-}
+
