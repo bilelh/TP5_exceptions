@@ -20,33 +20,31 @@ public class ModifierPizzaService extends MenuService {
 		String modif_code = questionUser.nextLine();
 		
 		
-			// EXCEPTION
+			// EXCEPTION POUR CODE INEXISTANT
 		if(!pizzaDao.pizzaExists(modif_code)) {
 			throw new UpdatePizzaException(" La pizza à modifier n'existe pas");
 		}
 
-				
-			System.out.println("la pizza existe  ");
+			// MESSAGE POUR PIZZA EXISTANTE
+		System.out.println("la pizza existe  ");
+	
+			// L'UTILISATEUR RENSEIGNE LE CODE, LE NOM ET LE PRIX DE LA NOUVELLE PIZZA
+		System.out.println("Veuillez saisir le nouveau code:  ");
+		String newCode = questionUser.nextLine();
 		
+		System.out.println("Veuillez saisir le nouveau nom (sans espace):  ");
+		String newLibelle = questionUser.nextLine();
 		
-			System.out.println("Veuillez saisir le nouveau code:  ");
-			String newCode = questionUser.nextLine();
-			
-			System.out.println("Veuillez saisir le nouveau nom (sans espace):  ");
-			String newLibelle = questionUser.nextLine();
-			
-			System.out.println("Veuillez saisir le nouveau prix (avec une virgule):  ");
-			double newPrix = questionUser.nextDouble();
-			questionUser.nextLine();
-			
-			//Pizza newPizza = new Pizza (newCode , newLibelle , newPrix) ;
-			Pizza newPizza = new Pizza (newCode , newLibelle , newPrix) ;
-			pizzaDao.updatePizza(modif_code, newPizza);
+		System.out.println("Veuillez saisir le nouveau prix (avec une virgule):  ");
+		double newPrix = questionUser.nextDouble();
+		questionUser.nextLine();
+		
+			// MISE A JOUR DE LA PIZZA
+		Pizza newPizza = new Pizza (newCode , newLibelle , newPrix) ;
+		pizzaDao.updatePizza(modif_code, newPizza);
 			
 		
-		//} else {
-		//	System.out.println("la pizza n'existe pas  ");
-		}
+	}
 
 }
 

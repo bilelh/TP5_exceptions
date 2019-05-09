@@ -21,10 +21,10 @@ public class SupprimerPizzaService extends MenuService {
 		String suppr_code = questionUser.nextLine();
 		
 		
-			// EXCEPTION
+			// EXCEPTION POUR CODE INEXISTANT
 		if(!pizzaDao.pizzaExists(suppr_code)) {
 			
-			throw new DeletePizzaException(" La pizza à modifier n'existe pas.");
+			throw new DeletePizzaException(" La pizza à supprimer n'existe pas.");
 			
 		}
 			// SUPPRESSION DE LA PIZZA

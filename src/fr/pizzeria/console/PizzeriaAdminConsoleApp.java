@@ -2,6 +2,7 @@ package fr.pizzeria.console;
 
 import java.util.Scanner;
 
+import fr.pizzeria.exception.PizzaException;
 import fr.pizzeria.factory.MenuServiceFactory;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.service.AjouterPizzaService;
@@ -13,7 +14,7 @@ import fr.pizzeria.service.SupprimerPizzaService;
 
 public class PizzeriaAdminConsoleApp {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws PizzaException {
 		// TODO Auto-generated method stub
 		
 		
@@ -43,7 +44,17 @@ public class PizzeriaAdminConsoleApp {
 			
 			
 						// APPEL DE LA FACTORY
-				choice.factory(user_choice).executeUC(pizza) ;
+				
+				try {
+					
+					choice.factory(user_choice).executeUC(pizza) ;
+					
+				}catch(PizzaException pizzaException) {
+					
+					System.out.println(pizzaException.getMessage());
+					
+				}
+				
 				
 						// AFFICHAGE DE LA LISTE DES OPTIONS 
 				System.out.println("***** Pizzeria Administration *****  ");
